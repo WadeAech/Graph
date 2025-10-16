@@ -1,0 +1,30 @@
+# 旧版GCN模型
+
+dataset:
+  name: PubMedFull
+
+model:
+  layers:
+  - type: dropout
+    dropout_rate: 0
+  - type: gcn
+    hidden_dim: 256
+  - type: layernorm
+  - type: relu
+
+  - type: dropout
+    dropout_rate: 0
+  - type: gcn
+    hidden_dim: 256
+  - type: layernorm
+  - type: relu
+
+  - type: gcn  # 输出层不会添加激活和dropout
+
+    hidden_dim: 256
+training:
+  optimizer: 'adam'
+  lr: 0
+  wd: 0
+  epochs: 1000
+  seeds: [42, 100, 2023] # <-- 在这里设置默认种子

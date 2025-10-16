@@ -1,0 +1,32 @@
+# 一个新的测试用的GCN
+
+dataset:
+  name: Cora
+
+model:
+  activation: relu  # 全局默认激活函数
+  dropout: 0.2 # 全局默认Dropout率
+
+  layers:
+    - type: dropout
+      dropout_rate: 0.2
+    - type: gcn
+      hidden_dim: 256
+    - type: layernorm
+    - type: relu
+
+    - type: dropout
+      dropout_rate: 0.2
+    - type: gcn
+      hidden_dim: 256
+    - type: layernorm
+    - type: relu
+
+    - type: linear
+
+training:
+  optimizer: 'adam'
+  lr: 0.016397554456036807
+  wd: 0.0037837804691862246
+  epochs: 1000
+  seeds: [ 42, 100, 2023 ] # <-- 在这里设置默认种子

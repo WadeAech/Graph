@@ -1,0 +1,30 @@
+# 旧版GCN模型
+
+dataset:
+  name: Photo
+
+model:
+  layers:
+  - type: dropout
+    dropout_rate: 0.6000000000000001
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: dropout
+    dropout_rate: 0.6000000000000001
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: gcn  # 输出层不会添加激活和dropout
+
+    hidden_dim: 64
+training:
+  optimizer: 'adam'
+  lr: 0.00519541895809414
+  wd: 8.72305347991141e-06
+  epochs: 1000
+  seeds: [42, 100, 2023] # <-- 在这里设置默认种子

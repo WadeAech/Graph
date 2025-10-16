@@ -1,0 +1,30 @@
+# 旧版GCN模型
+
+dataset:
+  name: CiteSeer
+
+model:
+  layers:
+  - type: dropout
+    dropout_rate: 0.35000000000000003
+  - type: gcn
+    hidden_dim: 256
+  - type: layernorm
+  - type: relu
+
+  - type: dropout
+    dropout_rate: 0.35000000000000003
+  - type: gcn
+    hidden_dim: 256
+  - type: layernorm
+  - type: relu
+
+  - type: gcn  # 输出层不会添加激活和dropout
+
+    hidden_dim: 256
+training:
+  optimizer: 'adam'
+  lr: 0.03816322217641591
+  wd: 4.826774738886165e-06
+  epochs: 1000
+  seeds: [42, 100, 2023] # <-- 在这里设置默认种子

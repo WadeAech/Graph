@@ -1,0 +1,31 @@
+# GAT模型
+
+dataset:
+  name: wisconsin
+
+model:
+  # GAT通常使用ELU作为激活函数，效果比ReLU好
+  activation: relu
+
+  layers:
+    # --- 第一层 (输入层 -> 隐藏层) ---
+  - type: dropout
+    dropout_rate: 0
+  - type: gat
+    hidden_dim: 128
+    heads: 8
+  - type: elu
+
+  - type: dropout
+    dropout_rate: 0
+  - type: gat
+    hidden_dim: 128
+    heads: 8
+  - type: elu
+
+training:
+  optimizer: 'adam'
+  lr: 0  # GAT通常需要比GCN更小的学习率
+  wd: 0   # 权重衰减
+  epochs: 1000
+  seeds: [42, 100, 2023]

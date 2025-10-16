@@ -1,0 +1,30 @@
+# 自定义GCN模型
+
+dataset:
+  name: Cora
+
+model:
+  # GAT通常使用ELU作为激活函数，效果比ReLU好
+  activation: relu
+  # GAT论文和PyG示例中常用0.6的Dropout率
+  dropout: 0.6
+
+  layers:
+  - type: gat
+    hidden_dim: 128
+    heads: 8
+
+  - type: gat
+    hidden_dim: 128
+    heads: 8
+
+  - type: gat
+    hidden_dim: 128
+    heads: 1
+
+training:
+  optimizer: 'adam'
+  lr: 0.005 # GAT通常需要比GCN更小的学习率
+  wd: 0.0005 # 权重衰减
+  epochs: 1000
+  seeds: [ 42, 100, 2023 ]

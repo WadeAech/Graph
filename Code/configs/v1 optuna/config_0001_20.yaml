@@ -1,0 +1,30 @@
+# 旧版GCN模型
+
+dataset:
+  name: wisconsin
+
+model:
+  layers:
+  - type: dropout
+    dropout_rate: 0.65
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: dropout
+    dropout_rate: 0.65
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: gcn  # 输出层不会添加激活和dropout
+
+    hidden_dim: 64
+training:
+  optimizer: 'adam'
+  lr: 0.09416947509648246
+  wd: 0.009889925491853909
+  epochs: 1000
+  seeds: [42, 100, 2023] # <-- 在这里设置默认种子

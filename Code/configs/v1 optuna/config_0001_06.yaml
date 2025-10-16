@@ -1,0 +1,30 @@
+# 旧版GCN模型
+
+dataset:
+  name: Minesweeper
+
+model:
+  layers:
+  - type: dropout
+    dropout_rate: 0.30000000000000004
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: dropout
+    dropout_rate: 0.30000000000000004
+  - type: gcn
+    hidden_dim: 64
+  - type: layernorm
+  - type: relu
+
+  - type: gcn  # 输出层不会添加激活和dropout
+
+    hidden_dim: 64
+training:
+  optimizer: 'adam'
+  lr: 0.017258689829367388
+  wd: 1.534307103453644e-05
+  epochs: 1000
+  seeds: [42, 100, 2023] # <-- 在这里设置默认种子

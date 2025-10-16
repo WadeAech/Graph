@@ -1,0 +1,21 @@
+# 自定义GCN模型
+
+dataset:
+  name: actor
+
+model:
+  layers:
+  - type: mlp
+    hidden_dim: 128
+    dropout_rate: 0
+
+  - type: mlp
+    hidden_dim: 128
+    dropout_rate: 0
+
+training:
+  optimizer: 'adam'
+  lr: 0.08503859825373385 # GAT通常需要比GCN更小的学习率
+  wd: 1.842901902281208e-05 # 权重衰减
+  epochs: 1000
+  seeds: [42, 100, 2023]
